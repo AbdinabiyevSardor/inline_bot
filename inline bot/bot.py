@@ -32,22 +32,10 @@ async def start_command(message:Message):
     telegram_id = message.from_user.id
     try:
         db.add_user(full_name=full_name,telegram_id=telegram_id)
-        await message.answer(text="Assalomu alaykum bu bot inline bot")
+        await message.answer(text="Assalomu alaykum!!! Inline botga xush kelibsiz!!!")
     except:
-        await message.answer(text="Assalomu alaykum bu bot inlini bot")
+        await message.answer(text="Assalomu alaykum!!! Inline botga xush kelibsiz!!!")
 
-
-
-@dp.message(IsCheckSubChannels())
-async def kanalga_obuna(message:Message):
-    text = ""
-    inline_channel = InlineKeyboardBuilder()
-    for index,channel in enumerate(CHANNELS):
-        ChatInviteLink = await bot.create_chat_invite_link(channel)
-        inline_channel.add(InlineKeyboardButton(text=f"{index+1}-kanal",url=ChatInviteLink.invite_link))
-    inline_channel.adjust(1,repeat=True)
-    button = inline_channel.as_markup()
-    await message.answer(f"{text} kanallarga azo bo'ling",reply_markup=button)
 
 
 
@@ -76,7 +64,7 @@ async def advert_dp(message:Message,state:FSMContext):
 @dp.message(F.text=="/help")
 async def yordam(message:Message):
     # await state.set_state(Adverts.adverts)
-    await message.answer(text="salom bu bot inline bot hisoblanadi!!!")
+    await message.answer(text="Assalom nima sizga yordam kerak")
 
 @dp.message(Adverts.adverts)
 async def send_advert(message:Message,state:FSMContext):
@@ -104,63 +92,39 @@ async def inlini_surov(inlin_query:InlineQuery):
             id="1",
             title = "ISIFAT",
             input_message_content=InputTextMessageContent(message_text="ISIFAT"),
-            description="Sifat uquv markazi Navoidagi birinchi bulib uzing tekin python kursi bn ajralib turgan va unda malakali uqituvchilar dars beradi\nttps://i.ibb.co/p3gBWM1/photo-2024-03-06-15-05-42.jpg",
+            description="Sifat uquv markazi Navoidagi birinchi bulib uzing tekin python va telegram bot kursi bilan ajralib turadi\nttps://i.ibb.co/p3gBWM1/photo-2024-03-06-15-05-42.jpg",
             thumbnail_url="https://i.ibb.co/p3gBWM1/photo-2024-03-06-15-05-42.jpg"
             ),
 
             InlineQueryResultArticle(
             id="2",
             title = "SENSORIKA",
-            input_message_content=InputTextMessageContent(message_text="Sensorika ham yaxshi uquv markaz\nhttps://i.ibb.co/GpB0tx2/sensorika.jpg"),
-            description="Sensorika ham yaxshi uquv markaz",
+            input_message_content=InputTextMessageContent(message_text="Sensorika o'quv markazida kompyuter savodxonligi bn ajralib turadi\nhttps://i.ibb.co/GpB0tx2/sensorika.jpg"),
+            description="Sensorika o'quv markazida kompyuter savodxonligi bn ajralib turadi",
             thumbnail_url="https://i.ibb.co/GpB0tx2/sensorika.jpg"
             ),
 
             InlineQueryResultArticle(
             id="3",
             title = "IT PARK",
-            input_message_content=InputTextMessageContent(message_text="IT park ham yaxshi uquv markaz edi yaqinda qayta boshdan ochildi\nhttps://i.ibb.co/kShZv5K/it-parki.jpg"),
-            description="IT park ham yaxshi uquv markaz edi yaqinda qayta boshdan ochildi",
+            input_message_content=InputTextMessageContent(message_text="IT park qayta ochildi\nhttps://i.ibb.co/kShZv5K/it-parki.jpg"),
+            description="IT park qayta ochildi",
             thumbnail_url="https://i.ibb.co/kShZv5K/it-parki.jpg"
             ),
             InlineQueryResultArticle(
             id="4",
-            title = "Gorni Institut",
-            input_message_content=InputTextMessageContent(message_text="Gorni instetut navoidagi yirik va talabalari soni buyicha yuqori urinda turadi\nhttps://i.ibb.co/PZk8fxc/Screenshot-2024-03-13-164011.png"),
-            description="Gorni instetut navoidagi yirik va talabalari soni buyicha yuqori urinda turadi",
-            thumbnail_url="https://i.ibb.co/PZk8fxc/Screenshot-2024-03-13-164011.png"
-            ),
-            InlineQueryResultArticle(
-            id="5",
             title = "Tompson",
             input_message_content=InputTextMessageContent(message_text="Tompson uquv markazi yirik markaz\nhttps://i.ibb.co/ScYsWHf/Screenshot-2024-03-13-164345.png"),
             description="Tompson invirsty  xususiy talim maskani",
             thumbnail_url="https://i.ibb.co/ScYsWHf/Screenshot-2024-03-13-164345.png"
             ),
             InlineQueryResultArticle(
-            id="6",
+            id="5",
             title = "IT ILTS SCHOLL",
             input_message_content=InputTextMessageContent(message_text="IT ILTS SCHOLL\nbu yerda ham IT ham ILTS buyicha uqishingiz mumkin\nhttps://i.ibb.co/g6jkdb4/Screenshot-2024-03-13-164954.png"),
-            description="bu yerda ham IT ham ILTS buyicha uqishingiz mumkin",
+            description="Bu yerda ham IT va ILEAS buyicha uqishingiz mumkin.",
             thumbnail_url="https://i.ibb.co/g6jkdb4/Screenshot-2024-03-13-164954.png"
             ),
-
-            # InlineQueryResultArticle(
-            # id="7",
-            # title = "ILTS GENESES ",
-            # input_message_content=InputTextMessageContent(message_text="ILTS GENESES ingliz tilini biz bilan urganing"),
-            # description="ILTS GENESES ingliz tilini biz bilan urganing",
-            # thumbnail_url="https://www.google.com/url?sa=i&url=https%3A%2F%2Fieltsmaterial.com%2Fielts-full-form%2F&psig=AOvVaw2VyaORWyvSFu67lv7ey6aT&ust=1711180087255000&source=images"
-            # ),
-
-
-            # InlineQueryResultArticle(
-            # id="8",
-            # title = "sanat kolliji",
-            # input_message_content=InputTextMessageContent(message_text="Sanat kolliji yoshlarni sanatga tayorlashda va yaxshi sanatkor bo'lib yetishib chiqishi yulida kurashadi"),
-            # description="Sanat kolliji yoshlarni sanatga tayorlashda va yaxshi sanatkor bo'lib yetishib chiqishi yulida kurashadi",
-            # thumbnail_url="rasm quyishim kerak"
-            # ),
 
 
      ]
